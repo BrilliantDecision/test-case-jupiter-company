@@ -1,0 +1,231 @@
+@font-face {
+    font-family: Epilogue-ExtraBold;
+    src: local("../public/fonts/Epilogue/static/Epilogue-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: Epilogue-Regular;
+    src: local("../public/fonts/Epilogue/static/Epilogue-Regular.ttf");
+}
+
+@font-face {
+    font-family: Epilogue-Black;
+    src: local("../public/fonts/Epilogue/static/Epilogue-Black.ttf");
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    background-color: #28293e;
+    color: #ffffff;
+    padding-top: 18px;
+}
+
+.title {
+    font-family: Epilogue-ExtraBold, sans-serif;
+    font-size: 72px;
+    text-align: center;
+    margin: 70px 0 20px 0;
+}
+
+.desc {
+    font-family: Epilogue-Regular, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    width: 600px;
+    margin: 0 auto 70px;
+    color: #b0b1b6;
+}
+
+.wrapper-nav {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 200px auto 200px;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    font-family: Epilogue-Regular, sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.main-nav {
+    width: 550px;
+}
+
+.main-nav a {
+    color: #ffffff;
+}
+
+.logo {
+    font-family: Epilogue-Regular, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.contact-btn {
+    font-family: Epilogue-Black, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: transparent;
+    width: 150px;
+    border: 1px solid #b0b1b6;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdf0e9;
+    height: 100%;
+    padding-bottom: 150px;
+}
+
+.topic-list li {
+    display: inline-block;
+    font-family: Epilogue-regular, sans-serif;
+    color: #8f7466;
+    margin: 80px 40px;
+    cursor: pointer;
+}
+
+.topic-nav a {
+    color: #8f7466;
+}
+
+.load-more-btn {
+    font-family: Epilogue-Black, sans-serif;
+    font-size: 12px;
+    color: #391400;
+    background-color: white;
+    border-width: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    padding: 10px 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    margin: 16px;
+    width: 250px;
+    height: 280px;
+    border-width: 0;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.card:first-child {
+    outline: none;
+}
+
+article {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-bottom: 40px;
+    max-width: 1200px;
+}
+
+.topic-name {
+    text-decoration: none;
+    color: white;
+    font-size: 26px;
+    font-family: Epilogue-ExtraBold, sans-serif;
+}
+
+.topic-link {
+    width: fit-content;
+    color: #8f7466;
+    border-width: 0;
+    border-radius: 25px;
+    background-color: white;
+    padding: 5px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.mobile-sel {
+    display: none;
+    margin: 50px 0;
+    width: 250px;
+    color: #8f7466;
+    border: 1px solid #f1c6af;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Epilogue-regular, sans-serif;
+    outline: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-arrow {
+    background-image:
+            linear-gradient(45deg, transparent 50%, orangered 50%),
+            linear-gradient(135deg, orangered 50%, transparent 50%);
+    background-position:
+            calc(100% - 20px) calc(1em + 2px),
+            calc(100% - 15px) calc(1em + 2px),
+            calc(100% - 2.5em) 0.5em;
+    background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1200px) {
+    article {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .main-nav {
+        display: none;
+    }
+
+    .contact-btn {
+        display: none;
+    }
+
+    .wrapper-nav {
+        display: block;
+    }
+
+    article {
+        display: block;
+    }
+
+    .mobile-sel {
+        display: block;
+    }
+
+    .topic-list {
+        display: none;
+    }
+
+    .desc {
+        width: 300px;
+    }
+}
