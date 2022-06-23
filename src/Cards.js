@@ -27,18 +27,18 @@ function Cards({ topic, setTopic, lastCard, setLastCard}) {
         setDelCard(() => id);
     }
 
-    // убрать выделение
+    // убрать выделение, сменить тему
     const onClickButtonTopic = (e, topic) => {
-        setTopic(() => topic);
-        e.target.style.outline = "0";
-        lastCard.target.style.outline = "";
+        const selectMobile = document.querySelector("#topic-select-id");
+        if(lastCard) {
+            lastCard.target.style.outline = "";
+        }
+        selectMobile.value = topic;
         setLastCard(() => "");
+        setTopic(() => topic);
     }
 
-    const onClickPTopic = (e) => {
-        e.target.style.outline = "0";
-    }
-
+    // синхронизация фильтра с redux хранилищем
     const synchronize = (e) => {
         if(e.code === "Delete" && delFlag) {
             dispatch({type: "DELETE_CARD", payload: delCard});
@@ -64,7 +64,7 @@ function Cards({ topic, setTopic, lastCard, setLastCard}) {
                         }}
                         ></div>
                         <button className="topic-link" onClick={(e) => onClickButtonTopic(e, v.topic)}>{v.topic}</button>
-                        <p className="topic-name" onClick={(e) => onClickPTopic(e)}>{v.name}</p>
+                        <p className="topic-name">{v.name}</p>
                     </div>
                 )
             }
