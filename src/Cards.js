@@ -1,22 +1,21 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 
-function Cards({ topic, setTopic}) {
+function Cards({ topic, setTopic, lastCard, setLastCard}) {
     const dispatch = useDispatch();
     const tempCards = useSelector(state => state.cards);
     const [delCard, setDelCard] = useState();
     const [delFlag, setDelFlag] = useState(false);
-    const [lastCard, setLastCard] = useState("");
     let cards = [...tempCards];
 
     if(topic !== "all") cards = tempCards.filter((v) => v.topic === topic);
 
     const onClickCard = (e, id) => {
         if(!e.target.style.outline) {
+            e.target.style.outline = "4px solid lightgreen";
             if(lastCard) {
                 lastCard.target.style.outline = "";
             }
-            e.target.style.outline = "4px solid lightgreen";
             setLastCard(() => e);
             setDelFlag(() => true);
         }
@@ -32,6 +31,8 @@ function Cards({ topic, setTopic}) {
     const onClickButtonTopic = (e, topic) => {
         setTopic(() => topic);
         e.target.style.outline = "0";
+        lastCard.target.style.outline = "";
+        setLastCard(() => "");
     }
 
     const onClickPTopic = (e) => {
@@ -52,13 +53,16 @@ function Cards({ topic, setTopic}) {
                     <div
                         key={v.id}
                         id={v.id}
-                        className="card"
-                        tabIndex="0"
-                        onClick={(e) => onClickCard(e, v.id)}
-                        onKeyDown={(e) => synchronize(e)}
-                        style={{
+                        className="card">
+                        <div
+                            className="background-img-block"
+                            onClick={(e) => onClickCard(e, v.id)}
+                            onKeyDown={(e) => synchronize(e)}
+                            tabIndex="0"
+                            style={{
                             backgroundImage: `url(${v.picUrl})`
-                        }}>
+                        }}
+                        ></div>
                         <button className="topic-link" onClick={(e) => onClickButtonTopic(e, v.topic)}>{v.topic}</button>
                         <p className="topic-name" onClick={(e) => onClickPTopic(e)}>{v.name}</p>
                     </div>

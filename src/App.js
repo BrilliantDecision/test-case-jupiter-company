@@ -6,7 +6,16 @@ import {useDispatch} from "react-redux";
 
 function App() {
     const [topic, setTopic] = useState("all");
+    const [lastCard, setLastCard] = useState("");
     const dispatch = useDispatch();
+
+    const onLink = (topicName) => {
+        if(lastCard) {
+            lastCard.target.style.outline = "";
+        }
+        setLastCard(() => "");
+        setTopic(() => topicName);
+    }
 
     return (
         <div className="page">
@@ -48,13 +57,13 @@ function App() {
                     <option value="motion">Motion</option>
                 </select>
                 <ul className="topic-list">
-                    <li onClick={() => setTopic(() => "all")}>Show all</li>
-                    <li onClick={() => setTopic(() => "design")}>Design</li>
-                    <li onClick={() => setTopic(() => "branding")}>Branding</li>
-                    <li onClick={() => setTopic(() => "illustration")}>Illustration</li>
-                    <li onClick={() => setTopic(() => "motion")}>Motion</li>
+                    <li onClick={() => onLink("all")}>Show all</li>
+                    <li onClick={() => onLink("design")}>Design</li>
+                    <li onClick={() => onLink("branding")}>Branding</li>
+                    <li onClick={() => onLink("illustration")}>Illustration</li>
+                    <li onClick={() => onLink("motion")}>Motion</li>
                 </ul>
-                <Cards topic={topic} setTopic={setTopic}/>
+                <Cards topic={topic} setTopic={setTopic} lastCard={lastCard} setLastCard={setLastCard}/>
                 <button className="load-more-btn" onClick={() => dispatch({type: "ADD_CARDS"})}>LOAD MORE</button>
             </main>
         </div>

@@ -46,7 +46,7 @@ header {
     gap: 0;
     grid-template-columns: 200px auto 200px;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -124,16 +124,19 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 25px;
     margin: 16px;
-    width: 250px;
-    height: 280px;
     border-width: 0;
     border-radius: 5px;
-    background-size: cover;
-    background-position: center;
+    position: relative;
+}
+
+.background-img-block {
     background-repeat: no-repeat;
-    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+    width: 240px;
+    height: 300px;
+    border-radius: 5px;
 }
 
 .card:first-child {
@@ -144,7 +147,7 @@ article {
     display: grid;
     grid-template-columns: auto auto auto auto;
     margin-bottom: 40px;
-    max-width: 1200px;
+    max-width: 1300px;
 }
 
 .topic-name {
@@ -152,6 +155,10 @@ article {
     color: white;
     font-size: 26px;
     font-family: Epilogue-ExtraBold, sans-serif;
+    position: absolute;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    outline: 0;
 }
 
 .topic-link {
@@ -161,8 +168,11 @@ article {
     border-radius: 25px;
     background-color: white;
     padding: 5px 18px;
-    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 50px;
     cursor: pointer;
+    position: absolute;
+    outline: 0;
 }
 
 .mobile-sel {
