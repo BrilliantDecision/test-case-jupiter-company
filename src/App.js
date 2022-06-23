@@ -49,7 +49,7 @@ function App() {
                 <select
                     id="topic-select-id"
                     className="select-arrow mobile-sel"
-                    onChange={(e) => setTopic(() => e.target.value)}>
+                    onChange={(e) => onLink(e.target.value)}>
                     <option value="all">Show all</option>
                     <option value="design">Design</option>
                     <option value="branding">Branding</option>
