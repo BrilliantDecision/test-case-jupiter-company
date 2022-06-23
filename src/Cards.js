@@ -6,17 +6,23 @@ function Cards({ topic, setTopic}) {
     const tempCards = useSelector(state => state.cards);
     const [delCard, setDelCard] = useState();
     const [delFlag, setDelFlag] = useState(false);
+    const [lastCard, setLastCard] = useState("");
     let cards = [...tempCards];
 
     if(topic !== "all") cards = tempCards.filter((v) => v.topic === topic);
 
     const onClickCard = (e, id) => {
         if(!e.target.style.outline) {
+            if(lastCard) {
+                lastCard.target.style.outline = "";
+            }
             e.target.style.outline = "4px solid lightgreen";
+            setLastCard(() => e);
             setDelFlag(() => true);
         }
         else {
             e.target.style.outline = "";
+            setLastCard(() => "");
             setDelFlag(() => false);
         }
         setDelCard(() => id);
